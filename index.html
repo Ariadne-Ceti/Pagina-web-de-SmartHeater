@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hydro Smart Systems</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Segoe UI', sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#0f2027;
+color:white;
+overflow-x:hidden;
+}
+
+/* FONDO ANIMADO */
+
+.wave{
+position:fixed;
+width:200%;
+height:200%;
+background:radial-gradient(circle at center,#1fd1f9,#0f2027);
+opacity:0.15;
+animation:moveWave 12s infinite linear;
+z-index:-1;
+}
+
+@keyframes moveWave{
+0%{transform:translate(-10%,-10%)}
+50%{transform:translate(-20%,-15%)}
+100%{transform:translate(-10%,-10%)}
+}
+
+/* HEADER */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 60px;
+backdrop-filter:blur(10px);
+background:rgba(255,255,255,0.05);
+position:sticky;
+top:0;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo img{
+width:90px;
+height:auto;
+object-fit:contain;
+filter:drop-shadow(0px 3px 6px rgba(0,0,0,0.3));
+}
+
+.logo h1{
+font-size:24px;
+letter-spacing:1px;
+color:#4fd1c5;
+}
+
+/* MENU */
+
+nav a{
+text-decoration:none;
+color:white;
+margin-left:30px;
+font-weight:500;
+position:relative;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+width:0%;
+height:2px;
+background:#4fd1c5;
+left:0;
+bottom:-5px;
+transition:0.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+/* HERO */
+
+.hero{
+height:80vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h2{
+font-size:55px;
+background:linear-gradient(90deg,#4fd1c5,#63b3ed);
+-webkit-background-clip:text;
+color:transparent;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:20px;
+max-width:600px;
+opacity:0.9;
+margin-bottom:30px;
+}
+
+.hero button{
+padding:15px 35px;
+border:none;
+border-radius:40px;
+background:linear-gradient(90deg,#4fd1c5,#63b3ed);
+color:#0f2027;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.hero button:hover{
+transform:scale(1.1);
+}
+
+/* PRODUCTO PRINCIPAL */
+
+.producto-estrella{
+padding:100px 10%;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+}
+
+.contenido{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:50px;
+flex-wrap:wrap;
+}
+
+.texto{
+max-width:500px;
+}
+
+.texto h2{
+font-size:40px;
+color:#4fd1c5;
+margin-bottom:20px;
+}
+
+.descripcion{
+margin-bottom:25px;
+line-height:1.6;
+opacity:0.9;
+}
+
+.texto ul{
+list-style:none;
+margin-bottom:25px;
+}
+
+.texto ul li{
+margin-bottom:10px;
+font-size:16px;
+}
+
+.texto button{
+padding:15px 30px;
+border:none;
+border-radius:30px;
+background:linear-gradient(90deg,#4fd1c5,#63b3ed);
+color:#0f2027;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.texto button:hover{
+transform:scale(1.1);
+}
+
+.imagen img{
+width:400px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+}
+
+/* PRODUCTOS */
+
+.productos{
+padding:80px 10%;
+}
+
+.productos h2{
+text-align:center;
+font-size:38px;
+margin-bottom:50px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:35px;
+}
+
+/* TARJETAS */
+
+.card{
+background:rgba(255,255,255,0.08);
+border-radius:20px;
+padding:30px;
+text-align:center;
+backdrop-filter:blur(8px);
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-15px) scale(1.03);
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+}
+
+.card img{
+width:100%;
+border-radius:15px;
+margin-bottom:20px;
+}
+
+.card h3{
+color:#4fd1c5;
+margin-bottom:10px;
+}
+
+.card p{
+opacity:0.85;
+font-size:14px;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:30px;
+margin-top:50px;
+background:rgba(255,255,255,0.05);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="wave"></div>
+
+<header>
+
+<div class="logo">
+<img src="logo.png">
+<h1>Hydro Smart Systems</h1>
+</div>
+
+<nav>
+<a href="#">Inicio</a>
+<a href="#producto">Producto Principal</a>
+<a href="#productos">Productos</a>
+<a href="#">Tecnología</a>
+<a href="#">Contacto</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h2>Agua Inteligente para un Futuro Sustentable</h2>
+
+<p>
+Hydro Smart Systems desarrolla electrodomésticos inteligentes y ecológicos
+que optimizan el uso de energía y agua mediante tecnología avanzada.
+</p>
+
+<button onclick="document.getElementById('producto').scrollIntoView()">Ver Producto Principal</button>
+
+</section>
+
+<!-- PRODUCTO PRINCIPAL -->
+<section class="producto-estrella" id="producto">
+
+<div class="contenido">
+
+<div class="texto">
+<h2>Smart Heater</h2>
+
+<p class="descripcion">
+El Smart Heater es el producto estrella de Hydro Smart Systems, diseñado para
+ofrecer una experiencia completamente inteligente en el calentamiento de agua.
+Este sistema aprende tus hábitos de uso, optimiza el consumo energético y
+garantiza agua caliente de forma eficiente y sostenible.
+</p>
+
+<ul>
+<li>🔥 Regulación automática de temperatura</li>
+<li>📱 Control desde aplicación móvil</li>
+<li>🌱 Ahorro energético de hasta 40%</li>
+<li>⚡ Calentamiento rápido y eficiente</li>
+<li>💧 Monitoreo inteligente del consumo</li>
+</ul>
+
+<a href="smartheater.html" target="_blank">
+<button>Conocer más</button>
+</a>
+</div>
+
+<div class="imagen">
+<img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc">
+</div>
+
+</div>
+
+</section>
+
+<!-- PRODUCTOS -->
+<section class="productos" id="productos">
+
+<h2>Nuestros Productos Inteligentes</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952">
+<h3>Boiler SmartEco</h3>
+<p>Sistema inteligente que regula automáticamente la temperatura y reduce el consumo energético.</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1558002038-1055907df827">
+<h3>Hydro Heater Pro</h3>
+<p>Calentador ecológico diseñado para hogares inteligentes y sostenibles.</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1581093588401-22c9f3b7b1c6">
+<h3>Smart Water Control</h3>
+<p>Controla el flujo de agua y energía desde tu smartphone.</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 Hydro Smart Systems | Tecnología ecológica inteligente</p>
+
+</footer>
+
+</body>
+</html>
