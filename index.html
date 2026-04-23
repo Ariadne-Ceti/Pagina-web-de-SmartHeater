@@ -3,373 +3,260 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hydro Smart Systems</title>
+<title>SmartHeater – Calefacción Inteligente</title>
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family: 'Segoe UI', sans-serif;
+/* ======== ESTILOS GENERALES ======== */
+:root {
+    --azul-oscuro: #00283d;
+    --azul: #1e5a8a;
+    --verde: #5cab20;
+    --gradiante: linear-gradient(135deg, #1e5a8a, #5cab20);
+    --fondo-suave: #e9f1f6;
 }
 
-html{
-scroll-behavior:smooth;
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: var(--fondo-suave);
+    color: #222;
 }
 
-body{
-background:#0f2027;
-color:white;
-overflow-x:hidden;
+/* ===== NAVBAR ===== */
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+    background: rgba(255,255,255,0.9);
+    z-index: 1000;
 }
 
-/* FONDO ANIMADO */
-
-.wave{
-position:fixed;
-width:200%;
-height:200%;
-background:radial-gradient(circle at center,#1fd1f9,#0f2027);
-opacity:0.15;
-animation:moveWave 12s infinite linear;
-z-index:-1;
-}
-
-@keyframes moveWave{
-0%{transform:translate(-10%,-10%)}
-50%{transform:translate(-20%,-15%)}
-100%{transform:translate(-10%,-10%)}
-}
-
-/* HEADER */
-
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:25px 60px;
-backdrop-filter:blur(10px);
-background:rgba(255,255,255,0.05);
-position:sticky;
-top:0;
-}
-
-.logo{
-display:flex;
-align-items:center;
-gap:15px;
-}
-
-.logo img{
-width:90px;
-height:auto;
-object-fit:contain;
-filter:drop-shadow(0px 3px 6px rgba(0,0,0,0.3));
-}
-
-.logo h1{
-font-size:24px;
-letter-spacing:1px;
-color:#4fd1c5;
+nav img {
+    height: 50px;
 }
 
 /* MENU */
-
-nav a{
-text-decoration:none;
-color:white;
-margin-left:30px;
-font-weight:500;
-position:relative;
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
 }
 
-nav a::after{
-content:"";
-position:absolute;
-width:0%;
-height:2px;
-background:#4fd1c5;
-left:0;
-bottom:-5px;
-transition:0.3s;
+nav ul li a {
+    text-decoration: none;
+    color: var(--azul-oscuro);
+    font-weight: bold;
 }
 
-nav a:hover::after{
-width:100%;
+/* BOTON HAMBURGUESA */
+.menu-btn {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
 }
 
-/* HERO */
-
-.hero{
-height:80vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
+/* ===== HERO ===== */
+#hero {
+    height: 100vh;
+    background: var(--gradiante);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
 }
 
-.hero h2{
-font-size:55px;
-background:linear-gradient(90deg,#4fd1c5,#63b3ed);
--webkit-background-clip:text;
-color:transparent;
-margin-bottom:20px;
+#hero h1 {
+    font-size: 3rem;
 }
 
-.hero p{
-font-size:20px;
-max-width:600px;
-opacity:0.9;
-margin-bottom:30px;
+.logo-hero {
+    width: 150px;
 }
 
-.hero button{
-padding:15px 35px;
-border:none;
-border-radius:40px;
-background:linear-gradient(90deg,#4fd1c5,#63b3ed);
-color:#0f2027;
-font-weight:bold;
-cursor:pointer;
-transition:0.3s;
+/* ===== SECCIONES ===== */
+section {
+    padding: 80px 10%;
 }
 
-.hero button:hover{
-transform:scale(1.1);
+h2 {
+    text-align: center;
 }
 
-/* PRODUCTO PRINCIPAL */
-
-.producto-estrella{
-padding:100px 10%;
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+/* ===== GRID ===== */
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
 }
 
-.contenido{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:50px;
-flex-wrap:wrap;
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
 }
 
-.texto{
-max-width:500px;
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
 }
 
-.texto h2{
-font-size:40px;
-color:#4fd1c5;
-margin-bottom:20px;
+.card img {
+    width: 100px;
+    margin-top: 10px;
 }
 
-.descripcion{
-margin-bottom:25px;
-line-height:1.6;
-opacity:0.9;
+/* ===== IMAGENES FLEX ===== */
+.img-section {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.texto ul{
-list-style:none;
-margin-bottom:25px;
+.img-section img {
+    width: 100%;
+    max-width: 300px;
 }
 
-.texto ul li{
-margin-bottom:10px;
-font-size:16px;
+/* ===== TECNOLOGIA ===== */
+.tecnologia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
-.texto button{
-padding:15px 30px;
-border:none;
-border-radius:30px;
-background:linear-gradient(90deg,#4fd1c5,#63b3ed);
-color:#0f2027;
-font-weight:bold;
-cursor:pointer;
-transition:0.3s;
+.tec-img {
+    width: 100%;
+    max-width: 250px;
 }
 
-.texto button:hover{
-transform:scale(1.1);
+/* ===== FOOTER ===== */
+footer {
+    background: var(--azul-oscuro);
+    color: white;
+    text-align: center;
+    padding: 20px;
 }
 
-.imagen img{
-width:400px;
-border-radius:20px;
-box-shadow:0 15px 40px rgba(0,0,0,0.4);
-}
+/* ============================= */
+/* 📱 RESPONSIVE (CELULAR) */
+/* ============================= */
+@media (max-width: 768px) {
 
-/* PRODUCTOS */
+    /* NAV */
+    .menu-btn {
+        display: block;
+    }
 
-.productos{
-padding:80px 10%;
-}
+    nav ul {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 20px 0;
+    }
 
-.productos h2{
-text-align:center;
-font-size:38px;
-margin-bottom:50px;
-}
+    nav ul.active {
+        display: flex;
+    }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:35px;
-}
+    /* HERO */
+    #hero h1 {
+        font-size: 2rem;
+    }
 
-/* TARJETAS */
+    /* GRID */
+    .grid-4,
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
 
-.card{
-background:rgba(255,255,255,0.08);
-border-radius:20px;
-padding:30px;
-text-align:center;
-backdrop-filter:blur(8px);
-transition:0.4s;
-}
+    /* SECCIONES */
+    section {
+        padding: 60px 5%;
+    }
 
-.card:hover{
-transform:translateY(-15px) scale(1.03);
-box-shadow:0 15px 40px rgba(0,0,0,0.4);
-}
+    /* TECNOLOGIA */
+    .tecnologia-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
 
-.card img{
-width:100%;
-border-radius:15px;
-margin-bottom:20px;
-}
+    /* TEXTOS */
+    p {
+        font-size: 16px !important;
+    }
 
-.card h3{
-color:#4fd1c5;
-margin-bottom:10px;
-}
-
-.card p{
-opacity:0.85;
-font-size:14px;
-}
-
-/* FOOTER */
-
-footer{
-text-align:center;
-padding:30px;
-margin-top:50px;
-background:rgba(255,255,255,0.05);
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="wave"></div>
-
-<header>
-
-<div class="logo">
-<img src="logo.png">
-<h1>Hydro Smart Systems</h1>
-</div>
-
+<!-- NAVBAR -->
 <nav>
-<a href="#">Inicio</a>
-<a href="#producto">Producto Principal</a>
-<a href="#productos">Productos</a>
-<a href="#">Tecnología</a>
-<a href="#">Contacto</a>
+    <img src="./imagenes/logoSmartHeater.png">
+    
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <ul id="menu">
+        <li><a href="#objetivo">Objetivo</a></li>
+        <li><a href="#prototipo">Prototipo</a></li>
+        <li><a href="#problema">Problema</a></li>
+        <li><a href="#tecnologia">Tecnología</a></li>
+        <li><a href="#app">App</a></li>
+        <li><a href="#datos">Datos</a></li>
+        <li><a href="#eficiencia">Eficiencia</a></li>
+        <li><a href="#idea">Origen</a></li>
+        <li><a href="#beneficios">Beneficios</a></li>
+    </ul>
 </nav>
 
-</header>
-
-<section class="hero">
-
-<h2>Agua Inteligente para un Futuro Sustentable</h2>
-
-<p>
-Hydro Smart Systems desarrolla electrodomésticos inteligentes y ecológicos
-que optimizan el uso de energía y agua mediante tecnología avanzada.
-</p>
-
-<button onclick="document.getElementById('producto').scrollIntoView()">Ver Producto Principal</button>
-
+<!-- HERO -->
+<section id="hero">
+    <div>
+        <img src="./imagenes/logoSmartHeater.png" class="logo-hero">
+        <h1>SmartHeater</h1>
+        <p>Calentadores inteligentes, eficientes y ecológicos.</p>
+    </div>
 </section>
 
-<!-- PRODUCTO PRINCIPAL -->
-<section class="producto-estrella" id="producto">
+<!-- OBJETIVO -->
+<section id="objetivo">
+    <h2>Objetivo</h2>
 
-<div class="contenido">
-
-<div class="texto">
-<h2>Smart Heater</h2>
-
-<p class="descripcion">
-El Smart Heater es el producto estrella de Hydro Smart Systems, diseñado para
-ofrecer una experiencia completamente inteligente en el calentamiento de agua.
-Este sistema aprende tus hábitos de uso, optimiza el consumo energético y
-garantiza agua caliente de forma eficiente y sostenible.
-</p>
-
-<ul>
-<li>🔥 Regulación automática de temperatura</li>
-<li>📱 Control desde aplicación móvil</li>
-<li>🌱 Ahorro energético de hasta 40%</li>
-<li>⚡ Calentamiento rápido y eficiente</li>
-<li>💧 Monitoreo inteligente del consumo</li>
-</ul>
-
-<a href="smartheater.html" target="_blank">
-<button>Conocer más</button>
-</a>
-</div>
-
-<div class="imagen">
-<img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc">
-</div>
-
-</div>
-
+    <div class="grid-4">
+        <div class="card">Sensores inteligentes</div>
+        <div class="card">Control remoto</div>
+        <div class="card">App en tiempo real</div>
+        <div class="card">Diseño ecológico</div>
+    </div>
 </section>
 
-<!-- PRODUCTOS -->
-<section class="productos" id="productos">
-
-<h2>Nuestros Productos Inteligentes</h2>
-
-<div class="grid">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952">
-<h3>Boiler SmartEco</h3>
-<p>Sistema inteligente que regula automáticamente la temperatura y reduce el consumo energético.</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1558002038-1055907df827">
-<h3>Hydro Heater Pro</h3>
-<p>Calentador ecológico diseñado para hogares inteligentes y sostenibles.</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1581093588401-22c9f3b7b1c6">
-<h3>Smart Water Control</h3>
-<p>Controla el flujo de agua y energía desde tu smartphone.</p>
-</div>
-
-</div>
-
-</section>
-
+<!-- FOOTER -->
 <footer>
-
-<p>© 2026 Hydro Smart Systems | Tecnología ecológica inteligente</p>
-
+    © 2025 SmartHeater
 </footer>
+
+<script>
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
