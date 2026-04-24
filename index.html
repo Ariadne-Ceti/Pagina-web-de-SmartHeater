@@ -6,8 +6,6 @@
 <title>SmartHeater – Calefacción Inteligente</title>
 
 <style>
-
-/* ======== ESTILOS GENERALES ======== */
 :root {
     --azul-oscuro: #00283d;
     --azul: #1e5a8a;
@@ -21,6 +19,18 @@ body {
     font-family: "Segoe UI", sans-serif;
     background: var(--fondo-suave);
     color: #222;
+    scroll-behavior: smooth;
+}
+
+/* ===== ANIMACIONES ===== */
+.anchor {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 1s;
+}
+.anchor.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ===== NAVBAR ===== */
@@ -38,7 +48,7 @@ nav {
 }
 
 nav img {
-    height: 50px;
+    height: 55px;
 }
 
 nav ul {
@@ -53,7 +63,7 @@ nav ul li a {
     color: var(--azul-oscuro);
 }
 
-/* BOTON MENU */
+/* MENU HAMBURGUESA */
 .menu-btn {
     display: none;
     font-size: 28px;
@@ -73,55 +83,77 @@ nav ul li a {
 }
 
 #hero h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
 
 .logo-hero {
-    width: 150px;
+    width: 180px;
 }
 
 /* ===== SECCIONES ===== */
 section {
-    padding: 80px 10%;
+    padding: 80px 12%;
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     text-align: center;
+    margin-top: 90px;
 }
 
 /* ===== TARJETAS ===== */
 .card {
     background: white;
     border-radius: 15px;
-    padding: 20px;
+    padding: 25px;
     text-align: center;
+}
+
+.card img {
+    width: 120px;
+    margin-top: 15px;
 }
 
 /* ===== GRID ===== */
 .grid-4 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
+    gap: 40px;
 }
 
 .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    gap: 40px;
 }
 
-/* ===== IMAGENES ===== */
+/* ===== IMÁGENES ===== */
 img {
     max-width: 100%;
     height: auto;
 }
 
-/* ===== TECNOLOGIA ===== */
+/* ===== SECCIÓN IMAGEN ===== */
+.img-section {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.img-section img {
+    width: 340px;
+}
+
+/* ===== TECNOLOGÍA ===== */
 .tecnologia-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 40px;
+}
+
+.tec-img {
+    width: 40%;
 }
 
 /* ===== FOOTER ===== */
@@ -129,7 +161,7 @@ footer {
     background: var(--azul-oscuro);
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 25px;
 }
 
 /* ============================= */
@@ -171,10 +203,14 @@ footer {
         padding: 60px 5%;
     }
 
+    .tec-img {
+        width: 80%;
+        margin: auto;
+    }
+
     p {
         font-size: 16px !important;
     }
-
 }
 
 </style>
@@ -182,12 +218,9 @@ footer {
 
 <body>
 
-<!-- NAVBAR -->
-<nav id="navbar">
+<nav>
     <img src="./imagenes/logoSmartHeater.png">
-
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
-
     <ul id="menu">
         <li><a href="#objetivo">Objetivo</a></li>
         <li><a href="#prototipo">Prototipo</a></li>
@@ -201,46 +234,55 @@ footer {
     </ul>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
+<section id="hero" class="anchor">
     <div>
         <img src="./imagenes/logoSmartHeater.png" class="logo-hero">
         <h1>SmartHeater</h1>
-        <p>La nueva generación de calentadores inteligentes</p>
+        <p>La nueva generación de calentadores inteligentes, eficientes y ecológicos.</p>
     </div>
 </section>
 
-<!-- OBJETIVO -->
-<section id="objetivo">
-    <h2>Objetivo</h2>
+<section id="objetivo" class="anchor">
+    <h2>Objetivo General</h2>
+    <p>Desarrollar un boiler inteligente controlado por internet...</p>
 
     <div class="grid-4">
-        <div class="card">Sensores inteligentes</div>
-        <div class="card">Control remoto</div>
-        <div class="card">App en tiempo real</div>
-        <div class="card">Diseño ecológico</div>
+        <div class="card"><img src="./imagenes/iconsensor.webp">Sensores</div>
+        <div class="card"><img src="./imagenes/onoff.png">Control</div>
+        <div class="card"><img src="./imagenes/iconapp.png">App</div>
+        <div class="card"><img src="./imagenes/ecologicicon.png">Eco</div>
     </div>
 </section>
 
-<!-- BENEFICIOS -->
-<section id="beneficios">
+<section id="beneficios" class="anchor">
     <h2>Beneficios</h2>
-
     <div class="grid-3">
         <div class="card">Control total</div>
-        <div class="card">Ahorro energía</div>
-        <div class="card">Mayor seguridad</div>
+        <div class="card">Ahorro energético</div>
+        <div class="card">Seguridad</div>
     </div>
 </section>
 
 <footer>
-    © 2025 SmartHeater
+© 2025 SmartHeater
 </footer>
 
 <script>
 function toggleMenu(){
     document.getElementById("menu").classList.toggle("active");
 }
+
+const anchors = document.querySelectorAll(".anchor");
+function showAnchors() {
+    anchors.forEach(a => {
+        const top = a.getBoundingClientRect().top;
+        if (top < window.innerHeight - 120) {
+            a.classList.add("visible");
+        }
+    });
+}
+window.addEventListener("scroll", showAnchors);
+showAnchors();
 </script>
 
 </body>
