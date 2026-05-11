@@ -315,6 +315,42 @@ img {
     }
 }
 
+/* ======== VIDEO ======== */
+
+.video-container{
+display:flex;
+justify-content:center;
+margin-top:40px;
+}
+
+.video-container video{
+width:90%;
+max-width:900px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+
+.video-text{
+text-align:center;
+font-size:20px;
+margin-top:25px;
+padding:0 10%;
+}
+
+/* RESPONSIVE VIDEO */
+@media (max-width:768px){
+
+.video-container video{
+width:100%;
+}
+
+.video-text{
+font-size:18px;
+padding:0;
+}
+
+}
+
 
     </style>
 </head>
@@ -573,6 +609,27 @@ img {
             </p>
         </div>
     </div>
+</section>
+
+<!-- ================= VIDEO ================= -->
+<section id="video" class="anchor">
+
+    <h2>Video Explicativo del Proyecto</h2>
+
+    <div class="video-container">
+
+        <video controls autoplay muted loop>
+            <source src="./videos/smartheater.mp4" type="video/mp4">
+            Tu navegador no soporta videos.
+        </video>
+
+    </div>
+
+    <p class="video-text">
+        Conoce a profundidad el funcionamiento de SmartHeater, su tecnología,
+        el sistema IoT, la aplicación móvil y el impacto ecológico del proyecto.
+    </p>
+
 </section>
 
 <!-- ================= BENEFICIOS ================= -->
